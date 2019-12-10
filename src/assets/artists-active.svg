@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>ic-video-library-24px</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic-video-library-24px" transform="translate(-2.000000, -2.000000)">
+            <polygon id="Path" points="0 0 30 0 30 30 0 30"></polygon>
+            <path d="M5,7.5 L2.5,7.5 L2.5,25 C2.5,26.375 3.625,27.5 5,27.5 L22.5,27.5 L22.5,25 L5,25 L5,7.5 Z M25,2.5 L10,2.5 C8.625,2.5 7.5,3.625 7.5,5 L7.5,20 C7.5,21.375 8.625,22.5 10,22.5 L25,22.5 C26.375,22.5 27.5,21.375 27.5,20 L27.5,5 C27.5,3.625 26.375,2.5 25,2.5 Z M15,18.125 L15,6.875 L22.5,12.5 L15,18.125 Z" id="Shape" fill="#29A19C" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

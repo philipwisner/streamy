@@ -1,4 +1,4 @@
-# streamy
+# Streamy
 
 ## Project setup
 ```
