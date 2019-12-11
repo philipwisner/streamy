@@ -8,8 +8,10 @@
     <div class="song-title-container">
       <div class="play-container">
         <img src="../assets/song-box.svg" alt="Song">
-        <button class="play-button" v-if="!playing" @click="playAudio()"><img src="../assets/play.svg"></button>
-        <button class="play-button" v-if="playing" @click="pauseAudio()"><img src="../assets/pause.svg"></button>
+        <button class="play-button" v-if="!playing" @click="$emit('play-audio', song[0])"><img src="../assets/play.svg"></button>
+        <!-- <button class="play-button" v-if="!playing" @click="playAudio()"><img src="../assets/play.svg"></button> -->
+        <button class="play-button" v-if="playing" @click="$emit('pause-audio')"><img src="../assets/pause.svg"></button>
+        <!-- <button class="play-button" v-if="playing" @click="pauseAudio()"><img src="../assets/pause.svg"></button> -->
       </div>
       <div class="info-content">
         <h1>{{song[0].label}}</h1>
@@ -19,7 +21,6 @@
     </div>
     <h2 class="results-title">DESCRIPTION</h2>
     <p class="description">{{song[0].description}}</p>
-    <p class="error" v-if="error">Unable to play, source file was not found.</p>
   </div>
 </template>
 
@@ -33,42 +34,42 @@ export default {
   },
   props: {
     songs: Array,
+    playing: Boolean,
+    error: Boolean,
   },
   data() {
     return {
       song: this.songs.filter(song => {
         return song.id == this.$route.params.id;
       }),
-      error: null,
-      playing: false,
       newPlay: true,
       audio: null,
     }
   },
-  methods: {
-    async playAudio() {
-      if (!this.newPlay) {
-        this.audio.play();
-        this.playing = true;
-        return;
-      }
-      this.audio = new Audio(this.song[0].url);
-      this.audio.type = 'audio/wav';
-      try {
-        if (!this.playing) {
-          await this.audio.play();
-          this.playing = true;
-          this.newPlay = false;
-        }
-      } catch (err) {
-        this.error = err;
-      }
-    },
-    pauseAudio() {
-      this.audio.pause();
-      this.playing = false;
-    }
-  }
+  // methods: {
+  //   async playAudio() {
+  //     if (!this.newPlay) {
+  //       this.audio.play();
+  //       this.playing = true;
+  //       return;
+  //     }
+  //     this.audio = new Audio(this.song[0].url);
+  //     this.audio.type = 'audio/wav';
+  //     try {
+  //       if (!this.playing) {
+  //         await this.audio.play();
+  //         this.playing = true;
+  //         this.newPlay = false;
+  //       }
+  //     } catch (err) {
+  //       this.error = err;
+  //     }
+  //   },
+  //   pauseAudio() {
+  //     this.audio.pause();
+  //     this.playing = false;
+  //   }
+  // }
 }
 </script>
 

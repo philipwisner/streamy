@@ -2,10 +2,10 @@
   <div id="app">
     <div class="row-1">
       <SideNavigation id="side-nav"/>
-      <router-view id="router-view" :songs="songs"/>
+      <router-view id="router-view" :songs="songs" @play-audio="playAudio" @pause-audio="pauseAudio" :playing="playing" :error="error"/>
     </div>
     <div class="row-2">
-      <MediaPlayer id="media-player"/>
+      <MediaPlayer id="media-player" :song="song" @close-error="closeError" :error="error" :playing="playing" @play-audio="playAudio" @pause-audio="pauseAudio"/>
     </div>
   </div>
 </template>
@@ -24,6 +24,42 @@ export default {
   data () {
     return {
       songs: appData,
+      song: null,
+      error: null,
+      playing: false,
+      newPlay: true,
+      audio: null,
+    }
+  },
+  methods: {
+    async playAudio(e) {
+      if (!this.song) {
+        this.song = e;
+      }
+      if (!this.newPlay) {
+        this.audio.play();
+        this.playing = true;
+        return;
+      }
+      this.audio = new Audio(this.song.url);
+      this.audio.type = 'audio/wav';
+      try {
+        if (!this.playing) {
+          await this.audio.play();
+          this.playing = true;
+          this.newPlay = false;
+        }
+      } catch (err) {
+        this.error = err;
+      }
+    },
+    pauseAudio() {
+      this.audio.pause();
+      this.playing = false;
+      this.error = false;
+    },
+    closeError() {
+      this.error = null;
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="library">
-    <LibraryPage :songs="songs"/>
+    <LibraryPage :songs="songs" @play-audio="playAudio"/>
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
   },
   props: {
     songs: Array
+  },
+  methods: {
+    playAudio(song) {
+      window.alert('play', song[0].label);
+    }
   }
 }
 </script>
