@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="results-container">
-      <ArtistIcon :key="artist" v-for="artist in artists" :artist="artist" class="song-container"/>
+      <ArtistIcon :key="artist" v-for="artist in artists" :artist="artist" :path="artist" class="song-container"/>
     </div>
   </div>
 </template>

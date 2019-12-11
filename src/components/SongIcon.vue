@@ -1,5 +1,5 @@
 <template>
-  <div class="song-container">
+  <div class="song-container" @click="updateRoute(song.id)">
     <img src="../assets/song-box.svg" alt="cover">
     <div class="song-info">
       <p class="name">{{song.label}}</p>
@@ -12,11 +12,16 @@
 
 export default {
   name: 'SongIcon',
-  // components: {
-  //   CategoryList
-  // },
   props: {
-    song: Object
+    song: Object,
+  },
+  methods: {
+    updateRoute(route) {
+      if (this.$route.path !== route) {
+        this.$router.push({name: 'library', params: {id: route}});
+        this.$router.push(`library/${route}`);
+      }
+    }
   }
 }
 </script>
@@ -25,6 +30,7 @@ export default {
 .song-container {
   width: 180px;
   margin: 10px;
+  cursor: pointer;
 }
 .song-info {
   .name {

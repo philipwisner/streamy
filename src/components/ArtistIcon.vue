@@ -1,5 +1,5 @@
 <template>
-  <div class="artist-container">
+  <div class="artist-container" @click="updateRoute(path)">
     <img src="../assets/artist-box.svg" alt="cover">
     <div class="artist-info">
       <p class="name">{{artist}}</p>
@@ -15,7 +15,16 @@ export default {
   //   CategoryList
   // },
   props: {
-    artist: String
+    artist: String,
+    path: String,
+  },
+  methods: {
+    updateRoute(route) {
+      if (this.$route.path !== route) {
+        route = route.replace(/\s/g, '');
+        this.$router.push(`artists/${route}`);
+      }
+    }
   }
 }
 </script>
@@ -24,6 +33,7 @@ export default {
 .artist-container {
   width: 170px;
   margin: 10px;
+  cursor: pointer;
   img {
     width: 170px;
   }
