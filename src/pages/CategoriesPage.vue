@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="results-container">
-      <CategoryIcon :key="category" v-for="category in categories" :category="category" class="song-container"/>
+      <CategoryIcon :key="category" v-for="category in categories" :category="category" :path="category" class="category-icon"/>
     </div>
   </div>
 </template>
@@ -34,6 +34,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped style="scss">
+.category-icon {
+  cursor: pointer;
+}
 </style>

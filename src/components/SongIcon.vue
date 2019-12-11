@@ -35,7 +35,7 @@ export default {
   }
   .artist {
     font-weight: 100;
-    color: #E6E6E6;
+    color: #C2C2C2;
     font-size: 14px;
   }
 }

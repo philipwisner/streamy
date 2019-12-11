@@ -61,7 +61,7 @@ export default {
           text-overflow: ellipsis;
         }
         .artist {
-          color: #E6E6E6;
+          color: #C2C2C2;
           font-size: 12px;
           font-weight: 300;
         }

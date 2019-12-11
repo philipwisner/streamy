@@ -61,10 +61,10 @@ ul {
 .nav-panel {
   padding: 25px;
   overflow-y: auto;
-  color: #E6E6E6;
+  color: #C2C2C2;
 }
 a {
-  color: #E6E6E6;
+  color: #C2C2C2;
   text-decoration: none;
 }
 .hidden {

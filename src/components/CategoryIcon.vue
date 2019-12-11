@@ -1,5 +1,5 @@
 <template>
-  <div class="category-container">
+  <div class="category-container" @click="updateRoute(path)">
     <img v-if="category == 'Relaxation'" src="../assets/relaxation.svg" alt="category">
     <img v-if="category == 'Meditation'" src="../assets/meditation.svg" alt="category">
     <img v-if="category == 'Breathing'" src="../assets/breathing.svg" alt="category">
@@ -17,7 +17,16 @@ export default {
   //   CategoryList
   // },
   props: {
-    category: String
+    category: String,
+    path: String,
+  },
+  methods: {
+    updateRoute(route) {
+      if (this.$route.path !== route) {
+        route = route.toLowerCase();
+        this.$router.push(`categories/${route}`);
+      }
+    }
   }
 }
 </script>
