@@ -1,19 +1,19 @@
 <template>
   <div class="artists">
-    <img alt="Vue log" src="../assets/logo.svg">
-    <div>THIS IS ARTISTS VIEW</div>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <ArtistsPage :songs="songs"/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+import ArtistsPage from '@/pages/ArtistsPage.vue'
 
 export default {
-  name: 'artists',
-  // components: {
-  //   HelloWorld
-  // }
+  name: 'Arists',
+  components: {
+    ArtistsPage
+  },
+  props: {
+    songs: Array
+  }
 }
 </script>

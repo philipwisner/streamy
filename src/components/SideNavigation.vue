@@ -3,10 +3,10 @@
     <h1 class="logo-container">
       <img class="logo-image" src="../assets/logo_name.svg" alt="Streamy">
     </h1>
-    <div class="user-container">
+    <!-- <div class="user-container">
       <img class="user-icon" src="../assets/user-icon.svg" alt="user">
       <span>Philip Wisner</span>
-    </div>
+    </div> -->
     <div class="options-container">
       <ul class="options-list">
         <router-link to="/library">
@@ -74,13 +74,12 @@ a {
   }
 }
 .logo-container {
-  max-width: 230px;
+  max-width: 200px;
 }
 .logo-image {
   width: 100%;
 }
 .user-container {
-  margin: 0px 0 35px 0;
   font-weight: 800;
   color: white;
 }
@@ -89,9 +88,10 @@ a {
   width: 15px;
 }
 .options-container {
+  margin-top: 40px;
   margin-bottom: 60px;
   .options-list {
-  font-size: 18px;
+  font-size: 17px;
   }
   .options-item {
     margin: 18px 0;

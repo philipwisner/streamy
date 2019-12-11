@@ -1,18 +1,19 @@
 <template>
   <div class="library">
-    <div>THIS IS LIBRARY VIEW</div>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <LibraryPage :songs="songs"/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+import LibraryPage from '@/pages/LibraryPage.vue'
 
 export default {
   name: 'library',
-  // components: {
-  //   HelloWorld
-  // }
+  components: {
+    LibraryPage
+  },
+  props: {
+    songs: Array
+  }
 }
 </script>

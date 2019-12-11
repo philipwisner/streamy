@@ -1,18 +1,20 @@
 <template>
   <div class="categories">
-    <div>THIS IS CATEGORIES VIEW</div>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <CategoriesPage :songs="songs"/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+import CategoriesPage from '@/pages/CategoriesPage.vue'
+
 
 export default {
   name: 'categories',
-  // components: {
-  //   HelloWorld
-  // }
+  components: {
+    CategoriesPage
+  },
+  props: {
+    songs: Array
+  }
 }
 </script>
