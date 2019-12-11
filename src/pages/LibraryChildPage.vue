@@ -6,7 +6,11 @@
       </div>
     </div>
     <div class="song-title-container">
-      <img src="../assets/song-box.svg" alt="Song">
+      <div class="play-container">
+        <img src="../assets/song-box.svg" alt="Song">
+        <button class="play-button" v-if="!playing" @click="playAudio()"><img src="../assets/play.svg"></button>
+        <button class="play-button" v-if="playing" @click="pauseAudio()"><img src="../assets/pause.svg"></button>
+      </div>
       <div class="info-content">
         <h1>{{song[0].label}}</h1>
         <p class="artist">{{song[0].speaker}}</p>
@@ -15,6 +19,7 @@
     </div>
     <h2 class="results-title">DESCRIPTION</h2>
     <p class="description">{{song[0].description}}</p>
+    <p class="error" v-if="error">Unable to play, source file was not found.</p>
   </div>
 </template>
 
@@ -33,9 +38,37 @@ export default {
     return {
       song: this.songs.filter(song => {
         return song.id == this.$route.params.id;
-      })
+      }),
+      error: null,
+      playing: false,
+      newPlay: true,
+      audio: null,
     }
   },
+  methods: {
+    async playAudio() {
+      if (!this.newPlay) {
+        this.audio.play();
+        this.playing = true;
+        return;
+      }
+      this.audio = new Audio(this.song[0].url);
+      this.audio.type = 'audio/wav';
+      try {
+        if (!this.playing) {
+          await this.audio.play();
+          this.playing = true;
+          this.newPlay = false;
+        }
+      } catch (err) {
+        this.error = err;
+      }
+    },
+    pauseAudio() {
+      this.audio.pause();
+      this.playing = false;
+    }
+  }
 }
 </script>
 
@@ -44,12 +77,29 @@ export default {
   padding: 15px 40px;
   display: flex;
   align-items: center;
+  .play-container {
+    position: relative;
+  }
   img {
     width: 180px;
-    margin-right: 25px;
     flex: 0 0 auto;
   }
+  .play-button {
+    position: absolute;
+    right: 15px;
+    bottom: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+    img {
+      width: 25px;
+    }
+  }
   .info-content {
+    margin-left: 25px;
     h1 {
       text-transform: capitalize;
       font-size: 28px;
@@ -82,5 +132,11 @@ export default {
   padding: 0 50px;
   margin-top: 20px;
   font-weight: 100;
+}
+.error {
+  padding: 0 50px;
+  margin-top: 20px;
+  font-weight: 100;
+  color: #FF4C4C;
 }
 </style>
