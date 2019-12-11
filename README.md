@@ -1,5 +1,7 @@
 # Streamy
 
+View live demo [here](https://philipwisner.github.io/streamy/)
+
 ## Project setup
 ```
 npm install
